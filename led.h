@@ -21,9 +21,9 @@ public:
 
     enum State{
             Gray,
-            Green,
-            Red,
             Blue,
+            Red,
+            Green,
         };
 
 private:

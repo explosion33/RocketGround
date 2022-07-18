@@ -48,5 +48,7 @@ INCLUDEPATH += D:/vcpkg/packages/curl_x64-windows/bin
 DEPENDPATH += D:/vcpkg/packages/curl_x64-windows/bin
 DEPENDPATH += D:/vcpkg/packages/curl_x64-windows/include
 
-DISTFILES += \
-    ../../../../../Downloads/settings.png
+DISTFILES +=
+
+RESOURCES += \
+    rescources.qrc

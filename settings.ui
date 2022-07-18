@@ -14,8 +14,8 @@
    <string>Settings</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: #2D2D2D;
-color: rgb(255, 255, 255);
+   <string notr="true">background-color: #1E1E1E;
+color: #E0E0E0;
 font-size: 22px;</string>
   </property>
   <widget class="QTabWidget" name="tabWidget">
@@ -32,9 +32,9 @@ font-size: 22px;</string>
 
 QTabBar::tab 
 {
-    background: #4C4C4C;;
+    background: #3A3A3A;;
     color: white;   
-    border-color: #4C4C4C;
+    border-color: #3A3A3A;
 	padding-top: 4px;
 	padding-bottom: 4px;
 	padding-left: 8px;
@@ -44,9 +44,9 @@ QTabBar::tab
 QTabBar::tab:selected, 
 QTabBar::tab:hover 
 {
-    background: #6d6d6d;;
+    background: #464646;;
     color: white;   
-    border-color: #6d6d6d;
+    border-color: #464646;
 }</string>
    </property>
    <property name="tabPosition">
@@ -56,7 +56,7 @@ QTabBar::tab:hover
     <enum>QTabWidget::Rounded</enum>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>0</number>
    </property>
    <property name="elideMode">
     <enum>Qt::ElideNone</enum>
@@ -85,6 +85,9 @@ QTabBar::tab:hover
        <width>541</width>
        <height>591</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
      </property>
      <property name="currentIndex">
       <number>3</number>
@@ -1249,7 +1252,23 @@ QTabBar::tab:hover
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: #4C4C4C;</string>
+    <string notr="true">QPushButton
+{
+	border: 1px solid #999999;
+   background-color: rgba(62, 96, 193, 36);
+	border-radius: 5px;
+}
+
+QPushButton:pressed
+{
+	border-color: rgba(62, 96, 193, 255);
+   background-color: rgba(62, 96, 193, 66);
+}
+
+QPushButton:hover:!pressed
+{
+   background-color: rgba(62, 96, 193, 46);
+}</string>
    </property>
    <property name="text">
     <string>OK</string>
@@ -1265,7 +1284,23 @@ QTabBar::tab:hover
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: #4C4C4C;</string>
+    <string notr="true">QPushButton
+{
+	border: 1px solid #999999;
+   background-color: rgba(62, 96, 193, 0);
+	border-radius: 5px;
+}
+
+QPushButton:pressed
+{
+	border-color: rgba(62, 96, 193, 255);
+   background-color: rgba(62, 96, 193, 31);
+}
+
+QPushButton:hover:!pressed
+{
+   background-color: rgba(62, 96, 193, 11);
+}</string>
    </property>
    <property name="text">
     <string>CANCEL</string>
