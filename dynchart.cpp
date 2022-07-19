@@ -28,7 +28,13 @@ DynChart::DynChart(QChartView *view, QString title, std::string url, int numPoin
     view->setChart(chart);
     view->setRenderHint(QPainter::Antialiasing);
 
-    view->chart()->setTheme(QChart::ChartThemeDark);
+    //view->chart()->setTheme(QChart::ChartThemeDark);
+    qDebug() << this->series->color();
+    this->series->setColor(QColor(62, 96, 193, 255));
+    chart->axes(Qt::Horizontal).back()->setLabelsBrush(QBrush(QColor(255,255,255,255)));
+    chart->axes(Qt::Vertical).back()->setLabelsBrush(QBrush(QColor(255,255,255,255)));
+
+    qDebug() << this->series->color() << " | " << this->series->pointLabelsColor();
 
 
     qRegisterMetaType<std::vector<std::vector<double>>>("std::vector<std::vector<double>>");
@@ -86,7 +92,7 @@ void DynChart::appendPoints(std::vector<std::vector<double>> points) {
 
     this->blockSizes.push_back(points.size());
 
-    if (this->blockSizes.size() > this->maxBlocks) {
+    if (this->blockSizes.size() > (unsigned int)this->maxBlocks) {
         int num = this->blockSizes[0];
 
 
@@ -136,8 +142,8 @@ void DynChart::updateAxis() {
     maxY += yRange/10;
 
 
-    this->chart->axisX()->setRange(minX, maxX);
-    this->chart->axisY()->setRange(minY, maxY);
+    this->chart->axes(Qt::Horizontal).back()->setRange(minX, maxX);
+    this->chart->axes(Qt::Vertical).back()->setRange(minY, maxY);
 }
 
 void DynChart::removeDuplicatePoints(std::vector<std::vector<double>> *points) {
