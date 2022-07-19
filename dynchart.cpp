@@ -25,23 +25,26 @@ DynChart::DynChart(QChartView *view, QString title, std::string url, int numPoin
     chart->setPlotAreaBackgroundVisible(false);
     chart->setBackgroundVisible(false);
 
+    // clear up old chart from heap after new one is added
+    // program can crash if the current chart points to a deleted pointer
+    // and setChart() is called
+    QChart *old = view->chart();
     view->setChart(chart);
+    delete old;
+
+
     view->setRenderHint(QPainter::Antialiasing);
 
-    //view->chart()->setTheme(QChart::ChartThemeDark);
-    qDebug() << this->series->color();
     this->series->setColor(QColor(62, 96, 193, 255));
     chart->axes(Qt::Horizontal).back()->setLabelsBrush(QBrush(QColor(255,255,255,255)));
     chart->axes(Qt::Vertical).back()->setLabelsBrush(QBrush(QColor(255,255,255,255)));
-
-    qDebug() << this->series->color() << " | " << this->series->pointLabelsColor();
-
 
     qRegisterMetaType<std::vector<std::vector<double>>>("std::vector<std::vector<double>>");
 
     this->api = new GrabApi(url, delay, true, numPoints);
     this->api->moveToThread(&this->thread);
     connect(this, SIGNAL(startAPI()), this->api, SLOT(start()));
+    connect(this, SIGNAL(stopAPI()), this->api, SLOT(stop()));
 
     connect(this->api, SIGNAL(setPoints(std::vector<std::vector<double>>)),
             this, SLOT(setPoints(std::vector<std::vector<double>>)));
@@ -63,9 +66,14 @@ std::string DynChart::getURL() {
 }
 
 DynChart::~DynChart() {
+    qDebug() << "start of destructor";
+
     thread.terminate();
-    this->series->clear();
+
+    delete this->series;
+
     thread.wait();
+    qDebug() << "end of destructor";
 }
 
 void DynChart::setPoints(std::vector<std::vector<double>> points) {

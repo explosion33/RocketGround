@@ -13,7 +13,6 @@
 #include <curl/curl.h>
 
 
-
 class GrabApi : public QObject {
     Q_OBJECT
 
@@ -37,6 +36,7 @@ signals:
 
 public slots:
     void start();
+    void stop();
 
 private:
     std::string url;

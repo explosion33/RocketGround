@@ -41,6 +41,10 @@ void GrabApi::start() {
     }
 }
 
+void GrabApi::stop() {
+    qDebug() << "stop signal recieved";
+}
+
 size_t GrabApi::curlWriteCallback(void* contents, size_t size, size_t nmemb, std::string* s)
 {
     size_t newLength = size * nmemb;
