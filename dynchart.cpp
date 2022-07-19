@@ -66,7 +66,6 @@ DynChart::~DynChart() {
     thread.terminate();
     this->series->clear();
     thread.wait();
-
 }
 
 void DynChart::setPoints(std::vector<std::vector<double>> points) {

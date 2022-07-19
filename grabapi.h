@@ -44,8 +44,6 @@ private:
     int size;
     bool rolling;
     int numPoints;
-
-    std::vector<std::vector<double>> points;
 };
 
 

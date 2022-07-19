@@ -31,12 +31,11 @@ void GrabApi::start() {
                 if (rolling) {
                     emit appendPoints(list);
                 }
-                for (auto point : list) {
-                    if (!rolling)
+                else {
+                    for (auto point : list) {
                         emit addPoint(point[0], point[1]);
-                    this->points.push_back(point);
+                    }
                 }
-                this->size += list.size();
             }
         }
     }
@@ -72,6 +71,7 @@ std::string GrabApi::request(std::string url) {
         /* Check for errors */
         if (code != CURLE_OK) {
             //qDebug() << "Error " << code;
+            curl_easy_cleanup(curl);
             return "";
         }
 
@@ -94,6 +94,7 @@ std::vector<std::vector<double>> GrabApi::parseList(std::string data) {
         char c = data[i];
 
         if (c == '[') {
+            delete point;
             point = new std::vector<double>;
         }
         else if (c == ']' || c==',') {
@@ -117,6 +118,6 @@ std::vector<std::vector<double>> GrabApi::parseList(std::string data) {
         }
 
     }
-
+    delete point;
     return out;
 }
