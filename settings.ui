@@ -27,6 +27,9 @@ font-size: 22px;</string>
      <height>601</height>
     </rect>
    </property>
+   <property name="focusPolicy">
+    <enum>Qt::ClickFocus</enum>
+   </property>
    <property name="styleSheet">
     <string notr="true">QTabWidget::pane { border: 0; }
 
@@ -56,7 +59,7 @@ QTabBar::tab:hover
     <enum>QTabWidget::Rounded</enum>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>2</number>
    </property>
    <property name="elideMode">
     <enum>Qt::ElideNone</enum>
@@ -85,6 +88,9 @@ QTabBar::tab:hover
        <width>541</width>
        <height>591</height>
       </rect>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::ClickFocus</enum>
      </property>
      <property name="styleSheet">
       <string notr="true"/>
@@ -1310,9 +1316,38 @@ QPushButton:hover:!pressed
  <tabstops>
   <tabstop>url1</tabstop>
   <tabstop>title1</tabstop>
+  <tabstop>blocks1</tabstop>
+  <tabstop>points1</tabstop>
+  <tabstop>delay1</tabstop>
+  <tabstop>url2</tabstop>
+  <tabstop>title2</tabstop>
+  <tabstop>blocks2</tabstop>
+  <tabstop>points2</tabstop>
+  <tabstop>delay2</tabstop>
+  <tabstop>url3</tabstop>
+  <tabstop>title3</tabstop>
+  <tabstop>blocks3</tabstop>
+  <tabstop>points3</tabstop>
+  <tabstop>delay3</tabstop>
+  <tabstop>url4</tabstop>
+  <tabstop>title4</tabstop>
+  <tabstop>blocks4</tabstop>
+  <tabstop>points4</tabstop>
+  <tabstop>delay4</tabstop>
+  <tabstop>url_led1</tabstop>
+  <tabstop>title_led1</tabstop>
+  <tabstop>url_led2</tabstop>
+  <tabstop>title_led2</tabstop>
+  <tabstop>url1_2</tabstop>
+  <tabstop>title1_2</tabstop>
+  <tabstop>url2_2</tabstop>
+  <tabstop>title2_2</tabstop>
+  <tabstop>url3_2</tabstop>
+  <tabstop>title3_2</tabstop>
+  <tabstop>url4_2</tabstop>
+  <tabstop>title4_2</tabstop>
   <tabstop>cancel</tabstop>
   <tabstop>ok</tabstop>
-  <tabstop>tabWidget</tabstop>
  </tabstops>
  <resources/>
  <connections/>
