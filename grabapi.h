@@ -37,13 +37,17 @@ signals:
 public slots:
     void start();
     void stop();
+    void Delete();
 
 private:
+    void timerEvent(QTimerEvent *event);
+
     std::string url;
     int delay;
     int size;
     bool rolling;
     int numPoints;
+    int timerId;
 };
 
 

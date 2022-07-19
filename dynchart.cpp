@@ -45,6 +45,7 @@ DynChart::DynChart(QChartView *view, QString title, std::string url, int numPoin
     this->api->moveToThread(&this->thread);
     connect(this, SIGNAL(startAPI()), this->api, SLOT(start()));
     connect(this, SIGNAL(stopAPI()), this->api, SLOT(stop()));
+    connect(this, SIGNAL(deleteAPI()), this->api, SLOT(Delete()));
 
     connect(this->api, SIGNAL(setPoints(std::vector<std::vector<double>>)),
             this, SLOT(setPoints(std::vector<std::vector<double>>)));
@@ -66,14 +67,14 @@ std::string DynChart::getURL() {
 }
 
 DynChart::~DynChart() {
-    qDebug() << "start of destructor";
+    emit stopAPI();
+    emit deleteAPI();
 
-    thread.terminate();
+    thread.quit();
 
     delete this->series;
 
     thread.wait();
-    qDebug() << "end of destructor";
 }
 
 void DynChart::setPoints(std::vector<std::vector<double>> points) {

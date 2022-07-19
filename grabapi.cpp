@@ -6,43 +6,42 @@ GrabApi::GrabApi(std::string url, int delay, bool rolling, int numPoints) {
     this->size = 0;
     this->rolling = rolling;
     this->numPoints = numPoints;
-
 }
 
-void GrabApi::start() {
-    QElapsedTimer timer;
-    timer.start();
-    float lastTime = 0;
-    while (true) {
-        if (timer.elapsed() - lastTime > this->delay) {
-            std::string res;
-            if (this->rolling) {
-                res = GrabApi::request(this->url + "/" + std::to_string(1 + (this->numPoints * -1)));
-            }
-            else {
-                res = GrabApi::request(this->url + "/" + std::to_string(this->size));
-            }
+void GrabApi::timerEvent(QTimerEvent *event) {
+    std::string res;
+    if (this->rolling) {
+        res = GrabApi::request(this->url + "/" + std::to_string(1 + (this->numPoints * -1)));
+    }
+    else {
+        res = GrabApi::request(this->url + "/" + std::to_string(this->size));
+    }
 
-            if (res != "") {
-                lastTime = timer.elapsed();
-                std::vector<std::vector<double>> list = this->parseList(res);
+    if (res != "") {
+        std::vector<std::vector<double>> list = this->parseList(res);
 
-
-                if (rolling) {
-                    emit appendPoints(list);
-                }
-                else {
-                    for (auto point : list) {
-                        emit addPoint(point[0], point[1]);
-                    }
-                }
+        if (rolling) {
+            emit appendPoints(list);
+        }
+        else {
+            for (auto point : list) {
+                emit addPoint(point[0], point[1]);
             }
         }
     }
 }
 
+void GrabApi::start() {
+    this->timerId = startTimer(delay);
+}
+
 void GrabApi::stop() {
-    qDebug() << "stop signal recieved";
+    killTimer(timerId);
+    timerId = 0;
+}
+
+void GrabApi::Delete() {
+    delete this;
 }
 
 size_t GrabApi::curlWriteCallback(void* contents, size_t size, size_t nmemb, std::string* s)

@@ -30,6 +30,7 @@ public slots:
 signals:
     void startAPI();
     void stopAPI();
+    void deleteAPI();
 
 private:
     void updateAxis();
