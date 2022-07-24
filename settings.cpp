@@ -11,7 +11,25 @@ Settings::Settings(QWidget *parent) :
     connect(ui->cancel, SIGNAL(clicked()), this, SLOT(close()));
     connect(ui->ok, SIGNAL(clicked()), this, SLOT(update()));
 
-    std::map<QString, QString> settings = Settings::readSettings();
+
+    // setup directory
+    std::string docs = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation).toStdString();
+    this->settingsPath = docs + "/RocketGround/settings.ini";
+    if (!QDir(QString::fromStdString(docs + "/RocketGround")).exists()) {
+        qDebug() << "making settings folder";
+        QDir().mkdir(QString::fromStdString(docs + "/RocketGround"));
+    }
+
+    QFileInfo check_file(QString::fromStdString(this->settingsPath));
+    if (!(check_file.exists() && check_file.isFile())) {
+        qDebug() << "making new file";
+        QFile file(QString::fromStdString(this->settingsPath));
+        file.open(QIODevice::ReadWrite);
+        file.close();
+        this->writeDefaults();
+    }
+
+    std::map<QString, QString> settings = Settings::readSettings(this->settingsPath);
 
     ui->url1->setText(settings["URL1"]);
     ui->url2->setText(settings["URL2"]);
@@ -61,7 +79,7 @@ Settings::~Settings()
 }
 
 void Settings::writeSettings(std::map<QString, QString> settings) {
-    std::ofstream out("settings.ini");
+    std::ofstream out(this->settingsPath);
 
     for (auto const& x : settings)
     {
@@ -72,6 +90,54 @@ void Settings::writeSettings(std::map<QString, QString> settings) {
     }
 
     out.close();
+}
+
+void Settings::writeDefaults() {
+    std::map<QString, QString> settings;
+    settings["URL1"] = "";
+    settings["URL2"] = "";
+    settings["URL3"] = "";
+    settings["URL4"] = "";
+
+    settings["TITLE1"] = "Chart 1";
+    settings["TITLE2"] = "Chart 2";
+    settings["TITLE3"] = "Chart 3";
+    settings["TITLE4"] = "Chart 4";
+
+    settings["BLOCKS1"] = "10";
+    settings["BLOCKS2"] = "10";
+    settings["BLOCKS3"] = "10";
+    settings["BLOCKS4"] = "10";
+
+    settings["POINTS1"] = "100";
+    settings["POINTS2"] = "100";
+    settings["POINTS3"] = "100";
+    settings["POINTS4"] = "100";
+
+    settings["DELAY1"] = "500";
+    settings["DELAY2"] = "500";
+    settings["DELAY3"] = "500";
+    settings["DELAY4"] = "500";
+
+
+    settings["BTNURL1"] = "";
+    settings["BTNURL2"] = "";
+    settings["BTNURL3"] = "";
+    settings["BTNURL4"] = "";
+
+    settings["BTNTITLE1"] = "CMD 1";
+    settings["BTNTITLE2"] = "CMD 2";
+    settings["BTNTITLE3"] = "CMD 3";
+    settings["BTNTITLE4"] = "CMD 4";
+
+    settings["INDURL1"] = "";
+    settings["INDURL2"] = "";
+
+    settings["INDTITLE1"] = "LED 1";
+    settings["INDTITLE2"] = "LED 2";
+
+    emit settingsChanged(settings);
+    this->writeSettings(settings);
 }
 
 void Settings::update() {
@@ -125,10 +191,14 @@ void Settings::update() {
     this->close();
 }
 
-std::map<QString, QString> Settings::readSettings() {
+std::string Settings::getPath() {
+    return this->settingsPath;
+}
+
+std::map<QString, QString> Settings::readSettings(std::string path) {
     std::map<QString, QString> settings;
 
-    std::ifstream in("settings.ini");
+    std::ifstream in(path);
     std::string line;
     while (std::getline (in, line)) {
         int s = line.find(" = ");

@@ -5,12 +5,12 @@
 #define MyAppVersion "1.0"
 #define MyAppPublisher "Ethan Armstrong"
 #define MyAppURL "www.armstronglabs.net"
-#define MyAppExeName "Payload_Ground.exe"
+#define MyAppExeName "Rocket_Ground.exe"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{5837EB54-143F-4D41-9E1A-068004975940}
+AppId={{51DAC47F-2430-4D16-9661-C083A426E253}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 ;AppVerName={#MyAppName} {#MyAppVersion}
@@ -24,7 +24,7 @@ DisableProgramGroupPage=yes
 ;PrivilegesRequired=lowest
 PrivilegesRequiredOverridesAllowed=dialog
 OutputDir=C:\Users\wetha\Desktop\School\SARP\Code\build-Payload_Ground-Desktop_Qt_5_12_2_MinGW_64_bit-Release\installer
-OutputBaseFilename=mysetup
+OutputBaseFilename=rg_installer
 SetupIconFile=C:\Users\wetha\Desktop\School\SARP\Code\Payload_Ground\icon.ico
 Compression=lzma
 SolidCompression=yes
@@ -38,12 +38,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 
 [Files]
 Source: "C:\Users\wetha\Desktop\School\SARP\Code\build-Payload_Ground-Desktop_Qt_5_12_2_MinGW_64_bit-Release\release\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\wetha\Desktop\School\SARP\Code\build-Payload_Ground-Desktop_Qt_5_12_2_MinGW_64_bit-Release\release\libcurl.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\wetha\Desktop\School\SARP\Code\build-Payload_Ground-Desktop_Qt_5_12_2_MinGW_64_bit-Release\release\Qt5Charts.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\wetha\Desktop\School\SARP\Code\build-Payload_Ground-Desktop_Qt_5_12_2_MinGW_64_bit-Release\release\Qt5Core.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\wetha\Desktop\School\SARP\Code\build-Payload_Ground-Desktop_Qt_5_12_2_MinGW_64_bit-Release\release\Qt5Gui.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\wetha\Desktop\School\SARP\Code\build-Payload_Ground-Desktop_Qt_5_12_2_MinGW_64_bit-Release\release\Qt5Widgets.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\wetha\Desktop\School\SARP\Code\build-Payload_Ground-Desktop_Qt_5_12_2_MinGW_64_bit-Release\release\settings.ini"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\wetha\Desktop\School\SARP\Code\build-Payload_Ground-Desktop_Qt_5_12_2_MinGW_64_bit-Release\release\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]

@@ -25,7 +25,7 @@ color: rgb(255, 255, 255);</string>
        <enum>QLayout::SetDefaultConstraint</enum>
       </property>
       <item row="0" column="1">
-       <layout class="QGridLayout" name="gridLayout_4">
+       <layout class="QGridLayout" name="chart_grid">
         <item row="1" column="4">
          <widget class="QChartView" name="chart4">
           <property name="sizePolicy">
@@ -97,7 +97,7 @@ color: rgb(255, 255, 255);</string>
        </layout>
       </item>
       <item row="0" column="0">
-       <layout class="QGridLayout" name="gridLayout_3" rowstretch="1,0,0,0,0,0,0,0,0,0,0">
+       <layout class="QGridLayout" name="left_side_grid" rowstretch="1,0,0,0,0,0,0,0,0,0,0">
         <property name="verticalSpacing">
          <number>6</number>
         </property>
@@ -258,116 +258,21 @@ QPushButton:hover:!pressed
          </widget>
         </item>
         <item row="0" column="0">
-         <layout class="QVBoxLayout" name="buttons_frame">
-          <item>
-           <widget class="QPushButton" name="btn1">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-              <horstretch>1</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="cursor">
-             <cursorShape>PointingHandCursor</cursorShape>
-            </property>
-            <property name="focusPolicy">
-             <enum>Qt::NoFocus</enum>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QPushButton
-{
-	border: 1px solid #999999;
-   background-color: rgba(62, 96, 193, 0);
-	border-radius: 5px;
-}
-
-QPushButton:pressed
-{
-	border-color: rgba(62, 96, 193, 255);
-   background-color: rgba(62, 96, 193, 31);
-}
-
-QPushButton:hover:!pressed
-{
-   background-color: rgba(62, 96, 193, 11);
-}</string>
-            </property>
-            <property name="text">
-             <string>PushButton</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <spacer name="verticalSpacer_6">
+         <layout class="QGridLayout" name="gridLayout_3" rowstretch="2,2,2,2,2,2,2" rowminimumheight="40,0,40,0,40,0,40">
+          <item row="0" column="2">
+           <spacer name="horizontalSpacer_2">
             <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="sizeType">
-             <enum>QSizePolicy::Fixed</enum>
+             <enum>Qt::Horizontal</enum>
             </property>
             <property name="sizeHint" stdset="0">
              <size>
-              <width>20</width>
-              <height>15</height>
+              <width>40</width>
+              <height>20</height>
              </size>
             </property>
            </spacer>
           </item>
-          <item>
-           <widget class="QPushButton" name="btn2">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="cursor">
-             <cursorShape>PointingHandCursor</cursorShape>
-            </property>
-            <property name="focusPolicy">
-             <enum>Qt::NoFocus</enum>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QPushButton
-{
-	border: 1px solid #999999;
-   background-color: rgba(62, 96, 193, 0);
-	border-radius: 5px;
-}
-
-QPushButton:pressed
-{
-	border-color: rgba(62, 96, 193, 255);
-   background-color: rgba(62, 96, 193, 31);
-}
-
-QPushButton:hover:!pressed
-{
-   background-color: rgba(62, 96, 193, 11);
-}</string>
-            </property>
-            <property name="text">
-             <string>PushButton</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <spacer name="verticalSpacer_7">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="sizeType">
-             <enum>QSizePolicy::Fixed</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>20</width>
-              <height>15</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item>
+          <item row="4" column="1">
            <widget class="QPushButton" name="btn3">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -405,8 +310,46 @@ QPushButton:hover:!pressed
             </property>
            </widget>
           </item>
-          <item>
-           <spacer name="verticalSpacer_8">
+          <item row="0" column="1">
+           <widget class="QPushButton" name="btn1">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <horstretch>1</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton
+{
+	border: 1px solid #999999;
+   background-color: rgba(62, 96, 193, 0);
+	border-radius: 5px;
+}
+
+QPushButton:pressed
+{
+	border-color: rgba(62, 96, 193, 255);
+   background-color: rgba(62, 96, 193, 31);
+}
+
+QPushButton:hover:!pressed
+{
+   background-color: rgba(62, 96, 193, 11);
+}</string>
+            </property>
+            <property name="text">
+             <string>PushButton</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <spacer name="verticalSpacer_7">
             <property name="orientation">
              <enum>Qt::Vertical</enum>
             </property>
@@ -416,12 +359,12 @@ QPushButton:hover:!pressed
             <property name="sizeHint" stdset="0">
              <size>
               <width>20</width>
-              <height>15</height>
+              <height>10</height>
              </size>
             </property>
            </spacer>
           </item>
-          <item>
+          <item row="6" column="1">
            <widget class="QPushButton" name="btn4">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -459,14 +402,90 @@ QPushButton:hover:!pressed
             </property>
            </widget>
           </item>
+          <item row="2" column="1">
+           <widget class="QPushButton" name="btn2">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton
+{
+	border: 1px solid #999999;
+   background-color: rgba(62, 96, 193, 0);
+	border-radius: 5px;
+}
+
+QPushButton:pressed
+{
+	border-color: rgba(62, 96, 193, 255);
+   background-color: rgba(62, 96, 193, 31);
+}
+
+QPushButton:hover:!pressed
+{
+   background-color: rgba(62, 96, 193, 11);
+}</string>
+            </property>
+            <property name="text">
+             <string>PushButton</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <spacer name="verticalSpacer_6">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>10</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="5" column="1">
+           <spacer name="verticalSpacer_8">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>10</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="0" column="0">
+           <spacer name="horizontalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
          </layout>
-        </item>
-        <item row="6" column="0">
-         <widget class="QLabel" name="label_2">
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
         </item>
         <item row="2" column="0">
          <spacer name="verticalSpacer_2">
@@ -476,17 +495,10 @@ QPushButton:hover:!pressed
           <property name="sizeHint" stdset="0">
            <size>
             <width>20</width>
-            <height>300</height>
+            <height>200</height>
            </size>
           </property>
          </spacer>
-        </item>
-        <item row="5" column="0">
-         <widget class="QLabel" name="label_3">
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
         </item>
         <item row="7" column="0">
          <widget class="QLabel" name="label">
@@ -498,7 +510,7 @@ QPushButton:hover:!pressed
         <item row="3" column="0" alignment="Qt::AlignHCenter">
          <widget class="QLabel" name="label_5">
           <property name="text">
-           <string>Rocket Grorund v1.0</string>
+           <string>Rocket Ground v1.1</string>
           </property>
          </widget>
         </item>

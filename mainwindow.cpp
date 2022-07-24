@@ -27,7 +27,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(this->settingsPopUp, SIGNAL(settingsChanged(std::map<QString,QString>)),
             this, SLOT(updateLEDs(std::map<QString,QString>)));
 
-    auto settings = Settings::readSettings();
+    auto settings = Settings::readSettings(this->settingsPopUp->getPath());
     this->updateCharts(settings);
     this->updateButtons(settings);
     this->updateLEDs(settings);

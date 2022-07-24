@@ -35,7 +35,7 @@ font-size: 22px;</string>
 
 QTabBar::tab 
 {
-    background: #3A3A3A;;
+    background: rgb(58, 58, 58);;
     color: white;   
     border-color: #3A3A3A;
 	padding-top: 4px;
@@ -47,9 +47,9 @@ QTabBar::tab
 QTabBar::tab:selected, 
 QTabBar::tab:hover 
 {
-    background: #464646;;
+    background: rgb(62, 96, 193, 33);;
     color: white;   
-    border-color: #464646;
+    border-color: rgb(62, 96, 193);
 }</string>
    </property>
    <property name="tabPosition">
@@ -59,7 +59,7 @@ QTabBar::tab:hover
     <enum>QTabWidget::Rounded</enum>
    </property>
    <property name="currentIndex">
-    <number>2</number>
+    <number>0</number>
    </property>
    <property name="elideMode">
     <enum>Qt::ElideNone</enum>
@@ -93,10 +93,29 @@ QTabBar::tab:hover
       <enum>Qt::ClickFocus</enum>
      </property>
      <property name="styleSheet">
-      <string notr="true"/>
+      <string notr="true">QTabWidget::pane { border: 0; }
+
+QTabBar::tab 
+{
+    background: rgb(70, 70, 70);;
+    color: white;   
+    border-color: #3A3A3A;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	padding-left: 8px;
+	padding-right: 8px;
+}
+
+QTabBar::tab:selected, 
+QTabBar::tab:hover 
+{
+    background: rgb(62, 96, 193, 55);;
+    color: white;   
+    border-color: rgb(62, 96, 193, 55);
+}</string>
      </property>
      <property name="currentIndex">
-      <number>3</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="chart1_tab">
       <attribute name="title">
@@ -1261,19 +1280,19 @@ QTabBar::tab:hover
     <string notr="true">QPushButton
 {
 	border: 1px solid #999999;
-   background-color: rgba(62, 96, 193, 36);
+   background-color: rgba(62, 96, 193, 60);
 	border-radius: 5px;
 }
 
 QPushButton:pressed
 {
 	border-color: rgba(62, 96, 193, 255);
-   background-color: rgba(62, 96, 193, 66);
+   background-color: rgba(62, 96, 193, 90);
 }
 
 QPushButton:hover:!pressed
 {
-   background-color: rgba(62, 96, 193, 46);
+   background-color: rgba(62, 96, 193, 70);
 }</string>
    </property>
    <property name="text">

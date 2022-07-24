@@ -4,6 +4,9 @@
 #include <QWidget>
 #include <QDebug>
 #include <map>
+#include <QStandardPaths>
+#include <QDir>
+#include <QFileInfo>
 
 #include <fstream>
 
@@ -19,7 +22,8 @@ public:
     explicit Settings(QWidget *parent = nullptr);
     ~Settings();
 
-    static std::map<QString, QString> readSettings();
+    static std::map<QString, QString> readSettings(std::string path);
+    std::string getPath();
 
 signals:
     void settingsChanged(std::map<QString, QString> settings);
@@ -27,6 +31,8 @@ signals:
 private:
     Ui::Settings *ui;
     void writeSettings(std::map<QString, QString> settings);
+    void writeDefaults();
+    std::string settingsPath;
 
 private slots:
     void update();
