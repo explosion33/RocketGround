@@ -1,6 +1,8 @@
 # RocketGround
 A highly configurable gui for displaying rocketry flight data, and sending commands
 
+![Example GIF](https://github.com/explosion33/RocketGround/blob/main/RocketGround(1).gif)
+
 ## About
 A Ground control gui designed to be compatible with a wide variety of devices by using a rest api structure
 
